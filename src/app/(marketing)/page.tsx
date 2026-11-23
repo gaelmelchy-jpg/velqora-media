@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
-import { HeroNetwork } from "@/components/marketing/hero-network";
+import { Hero3D } from "@/components/marketing/hero-3d";
 import { ResultsSection } from "@/components/marketing/results-section";
 import { ContactForm } from "@/components/marketing/contact-form";
 
@@ -56,7 +56,7 @@ export default function MarketingHomePage() {
           <section className="relative overflow-hidden">
             <div className="app-aurora-hero" />
             <div className="app-grid" />
-            <HeroNetwork />
+            <Hero3D />
 
             <div className="relative z-10 mx-auto max-w-6xl px-4 pt-20 pb-24 sm:px-6 sm:pt-28 sm:pb-32">
               <div className="mx-auto max-w-3xl text-center">
