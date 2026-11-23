@@ -12,7 +12,7 @@ import { ContactForm } from "@/components/marketing/contact-form";
 export const metadata: Metadata = {
   title: "Velqora Media — Performance marketing & brand partnerships",
   description:
-    "Velqora Media runs paid social, influencer partnerships, and brand deals for entertainment and consumer brands — the same playbook behind real accounts like Natasha Graziano, Solrise Fuels, Men's Health, and THINX.",
+    "Velqora Media runs paid social, influencer partnerships, and brand deals for entertainment and consumer brands — the same playbook behind real accounts like Natasha Graziano, Solrise Fuels, Mens.com, and THINX.",
 };
 
 const SERVICES = [

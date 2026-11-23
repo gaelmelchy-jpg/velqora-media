@@ -4,10 +4,30 @@ import { useEffect, useRef, useState } from "react";
 import { TrendingUp, Target, ShoppingCart, DollarSign } from "lucide-react";
 
 const CLIENTS = [
-  { name: "Solrise Fuels", href: "https://solrisefuels.com/" },
-  { name: "Natasha Graziano", href: "https://www.instagram.com/natashagraziano/" },
-  { name: "Men's Health", href: "https://www.mens.com/" },
-  { name: "THINX", href: "https://www.thinx.com/" },
+  {
+    name: "Solrise Fuels",
+    category: "Energy & fuel",
+    initial: "S",
+    href: "https://solrisefuels.com/",
+  },
+  {
+    name: "Natasha Graziano",
+    category: "Creator & speaker",
+    initial: "N",
+    href: "https://www.instagram.com/natashagraziano/",
+  },
+  {
+    name: "Mens.com",
+    category: "Men's telehealth",
+    initial: "M",
+    href: "https://www.mens.com/",
+  },
+  {
+    name: "THINX",
+    category: "Apparel",
+    initial: "T",
+    href: "https://www.thinx.com/",
+  },
 ] as const;
 
 type Stat = {
@@ -123,24 +143,29 @@ export function ResultsSection() {
           </p>
         </div>
 
-        {/* Client wordmarks */}
-        <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+        {/* Client grid */}
+        <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
           {CLIENTS.map((client) => (
             <a
               key={client.name}
               href={client.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative font-heading text-lg font-semibold tracking-tight text-muted-foreground/70 transition-colors duration-300 hover:text-foreground sm:text-xl"
+              className="glass-panel group flex flex-col items-center gap-3 rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20"
             >
-              {client.name}
-              <span className="absolute inset-x-0 -bottom-1.5 h-px scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-primary to-sky-400 font-heading text-base font-semibold text-white shadow-[0_0_20px_-6px_rgba(47,111,238,0.6)] transition-shadow group-hover:shadow-[0_0_26px_-4px_rgba(47,111,238,0.85)]">
+                {client.initial}
+              </div>
+              <span className="font-heading text-sm font-semibold tracking-tight sm:text-base">
+                {client.name}
+              </span>
+              <span className="text-xs text-muted-foreground">{client.category}</span>
             </a>
           ))}
         </div>
 
         {/* Animated stat grid */}
-        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((stat) => (
             <div
               key={stat.label}
