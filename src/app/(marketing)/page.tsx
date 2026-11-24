@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Film, Megaphone, Sparkles, Users } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Film, Megaphone, Radio, Sparkles, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/marketing/site-header";
@@ -8,6 +7,8 @@ import { SiteFooter } from "@/components/marketing/site-footer";
 import { Hero3D } from "@/components/marketing/hero-3d";
 import { ResultsSection } from "@/components/marketing/results-section";
 import { ContactForm } from "@/components/marketing/contact-form";
+import { TiltCard } from "@/components/marketing/tilt-card";
+import { Reveal } from "@/components/marketing/reveal";
 
 export const metadata: Metadata = {
   title: "Velqora Media — Performance marketing & brand partnerships",
@@ -40,6 +41,12 @@ const SERVICES = [
     description:
       "Pages built to convert the traffic we're already buying — wired straight into the same CRM stack running the ad accounts.",
   },
+] as const;
+
+const FOUNDER_POINTS = [
+  { icon: Radio, text: "Direct access to Meta, TikTok & Google platforms — no account managers in between" },
+  { icon: Users, text: "Background in talent management and live events, not just media buying" },
+  { icon: Sparkles, text: "Every account on this page is one he personally runs, today" },
 ] as const;
 
 export default function MarketingHomePage() {
@@ -112,7 +119,7 @@ export default function MarketingHomePage() {
           {/* Services */}
           <section id="services" className="relative border-t border-white/[0.06] bg-card/20">
             <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-              <div className="mx-auto max-w-2xl text-center">
+              <Reveal className="mx-auto max-w-2xl text-center">
                 <span className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
                   Services
                 </span>
@@ -123,24 +130,23 @@ export default function MarketingHomePage() {
                   No fixed packages — every engagement is scoped to the brand. These are
                   the pieces we put together most often.
                 </p>
-              </div>
+              </Reveal>
 
               <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2">
-                {SERVICES.map((service) => (
-                  <Card
-                    key={service.title}
-                    className="glass-panel group border-transparent p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20"
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20">
-                      <service.icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <h3 className="mt-5 font-heading text-base font-semibold tracking-tight">
-                      {service.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {service.description}
-                    </p>
-                  </Card>
+                {SERVICES.map((service, i) => (
+                  <Reveal key={service.title} delay={i * 80}>
+                    <TiltCard className="h-full p-6 hover:border-primary/20">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20">
+                        <service.icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <h3 className="mt-5 font-heading text-base font-semibold tracking-tight">
+                        {service.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        {service.description}
+                      </p>
+                    </TiltCard>
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -149,33 +155,46 @@ export default function MarketingHomePage() {
           {/* Founder / about */}
           <section id="about" className="relative border-t border-white/[0.06]">
             <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6">
-              <div className="mx-auto max-w-2xl text-center">
+              <Reveal className="mx-auto max-w-2xl text-center">
                 <span className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
                   About
                 </span>
                 <h2 className="text-balance mt-3 font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
                   Run by one operator, not an account team
                 </h2>
-              </div>
+              </Reveal>
 
-              <div className="glass-panel mt-12 flex flex-col items-center gap-6 rounded-2xl p-8 text-center sm:flex-row sm:items-start sm:gap-8 sm:text-left">
-                {/* Placeholder avatar — replace with Gael's real photo */}
-                <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-sky-400 font-heading text-3xl font-semibold text-white shadow-[0_0_30px_-6px_rgba(47,111,238,0.6)]">
-                  G
+              <Reveal delay={100}>
+                <div className="glass-panel-raised mt-12 flex flex-col items-center gap-6 rounded-2xl p-8 text-center sm:flex-row sm:items-start sm:gap-8 sm:text-left">
+                  {/* Placeholder avatar — replace with Gael's real photo */}
+                  <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-sky-400 font-heading text-3xl font-semibold text-white shadow-[0_0_30px_-6px_rgba(47,111,238,0.6)]">
+                    G
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-lg font-semibold tracking-tight">
+                      Gael Melchy Calderón
+                    </h3>
+                    <p className="text-sm text-primary">Founder</p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      Gael is a Los Angeles-based entrepreneur with a background in talent
+                      management, live events, and brand partnerships in entertainment.
+                      Velqora Media grew out of running ad accounts and brand deals for real
+                      clients himself — no account managers relaying between you and the
+                      person actually in the ads platform.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-heading text-lg font-semibold tracking-tight">
-                    Gael Melchy Calderón
-                  </h3>
-                  <p className="text-sm text-primary">Founder</p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    Gael is a Los Angeles-based entrepreneur with a background in talent
-                    management, live events, and brand partnerships in entertainment.
-                    Velqora Media grew out of running ad accounts and brand deals for real
-                    clients himself — no account managers relaying between you and the
-                    person actually in the ads platform.
-                  </p>
-                </div>
+              </Reveal>
+
+              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                {FOUNDER_POINTS.map((point, i) => (
+                  <Reveal key={point.text} delay={160 + i * 80}>
+                    <div className="glass-panel flex h-full flex-col gap-3 rounded-2xl p-5">
+                      <point.icon className="h-4.5 w-4.5 text-primary" />
+                      <p className="text-sm leading-relaxed text-muted-foreground">{point.text}</p>
+                    </div>
+                  </Reveal>
+                ))}
               </div>
             </div>
           </section>
@@ -183,7 +202,7 @@ export default function MarketingHomePage() {
           {/* Contact */}
           <section id="contact" className="relative border-t border-white/[0.06] bg-card/20">
             <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6">
-              <div className="mx-auto max-w-xl text-center">
+              <Reveal className="mx-auto max-w-xl text-center">
                 <span className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
                   Contact
                 </span>
@@ -194,11 +213,11 @@ export default function MarketingHomePage() {
                   What you&rsquo;re running today, what you want to scale — we&rsquo;ll get
                   back to you shortly. You&rsquo;ll get a confirmation the moment you submit.
                 </p>
-              </div>
+              </Reveal>
 
-              <div className="mt-12">
+              <Reveal delay={120} className="mt-12">
                 <ContactForm />
-              </div>
+              </Reveal>
             </div>
           </section>
         </main>

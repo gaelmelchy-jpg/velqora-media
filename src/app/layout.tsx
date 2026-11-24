@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://velqora-media-production.up.railway.app"
+  ),
   title: "Velqora Media",
   description: "Performance marketing, influencer partnerships, and brand deals.",
 };
