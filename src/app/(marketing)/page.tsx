@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Film, Megaphone, Radio, Sparkles, Users } from "lucide-react";
+import { Film, Megaphone, Phone, Radio, Sparkles, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/marketing/site-header";
@@ -213,6 +213,13 @@ export default function MarketingHomePage() {
                   What you&rsquo;re running today, what you want to scale — we&rsquo;ll get
                   back to you shortly. You&rsquo;ll get a confirmation the moment you submit.
                 </p>
+                <a
+                  href="tel:+13194090146"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-foreground"
+                >
+                  <Phone className="h-4 w-4" />
+                  Or call us directly: (319) 409-0146
+                </a>
               </Reveal>
 
               <Reveal delay={120} className="mt-12">

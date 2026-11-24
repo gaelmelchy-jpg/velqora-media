@@ -17,6 +17,12 @@ export function SiteFooter() {
             Performance marketing, influencer partnerships, and brand deals for
             entertainment and consumer brands.
           </p>
+          <a
+            href="tel:+13194090146"
+            className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+          >
+            (319) 409-0146
+          </a>
         </div>
 
         <div className="flex flex-wrap gap-x-12 gap-y-6 text-sm">
